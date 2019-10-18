@@ -53,7 +53,7 @@ def main(args):
     desired_vep_info = [] if args.vep_info is None else args.vep_info.split(',')
     desired_sample_info = [] if args.sample_info is None else args.sample_info.split(',')
 
-    missing_string = '\N' if args.mysql else 'NA'
+    missing_string = '\\N' if args.mysql else 'NA'
 
     header = None
     vep_field_names = None
@@ -420,7 +420,7 @@ For VEP info extraction, VEP must be run with --allele_number.'''
 
     output_options = parser.add_argument_group('Output options')
     output_options.add_argument('--split_size', '-s', help='Split into chunks of this size', type=int, nargs='?', const=1, default=None)
-    output_options.add_argument('--mysql', action='store_true', help='Uses \N for missing data for easy reading into MySQL (default = NA, for R)')
+    output_options.add_argument('--mysql', action='store_true', help='Uses \\N for missing data for easy reading into MySQL (default = NA, for R)')
     output_options.add_argument('--only_pass', help='Only consider PASS variants', action='store_true')
     output_options.add_argument('--snps_only', help='Only output SNPs', action='store_true')
     output_options.add_argument('--biallelic_only', help='Only consider biallelic variants', action='store_true')
